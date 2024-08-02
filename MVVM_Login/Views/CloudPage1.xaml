@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:MVVM_Login.ViewModels"
+             xmlns:segmented="clr-namespace:Plugin.Maui.SegmentedControl;assembly=Plugin.Maui.SegmentedControl"
+			 x:Class="MVVM_Login.Views.CloudPage1">
+	<ContentPage.BindingContext>
+		<vm:CloudViewModel1 />
+	</ContentPage.BindingContext>
+    
+    <StackLayout>
+     <Frame BorderColor="#a7a7a7" 
+                   CornerRadius="0" 
+                   Padding="0" 
+                   HasShadow="False"
+                   WidthRequest="375"
+                   HeightRequest="43">
+                <Label Text="ZEISS Surgical Cloud" 
+                       WidthRequest="375"
+                       HeightRequest="43"
+                       Padding="2"
+                       BackgroundColor="#ffffff"
+                       FontFamily="Segoe UI Semibold"
+                       FontAttributes="Bold"
+                       TextColor="#333333"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Margin="0" />
+            </Frame>
+            <Grid ColumnSpacing="10" RowSpacing="10" Padding="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Search Bar -->
+            <SearchBar Placeholder="Search..." 
+                       Text="{Binding SearchText}" 
+                       SearchCommand="{Binding SearchCommand}"
+                       WidthRequest="266"
+                       HeightRequest="36"           
+                       BackgroundColor="#ffffff"
+                       FontFamily="Segoe UI"
+                       TextColor="#333333"
+                       HorizontalTextAlignment="Start"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       HorizontalOptions="FillAndExpand" />
+
+            <!-- Sort Picker -->
+            <Picker Title="Sort"
+                    ItemsSource="{Binding SortOptions}"
+                    SelectedItem="{Binding SelectedSortOption}"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    WidthRequest="36"
+                    HeightRequest="36" />
+
+            <!-- Filter Picker -->
+            <Picker Title="Filter"
+                    ItemsSource="{Binding FilterOptions}"
+                    SelectedItem="{Binding SelectedFilterOption}"
+                    Grid.Column="2"
+                    HorizontalOptions="Center"
+                    WidthRequest="36"
+                    HeightRequest="36" />
+        </Grid>
+
+    
+        <!-- Search Bar -->
+        <!-- <SearchBar Placeholder="Search..." 
+               Text="{Binding SearchText}" 
+               SearchCommand="{Binding SearchCommand}"
+               WidthRequest="266"
+               HeightRequest="36"           
+               BackgroundColor="#ffffff"
+               FontFamily="Segoe UI"
+               TextColor="#333333"
+               HorizontalTextAlignment="Start"
+               VerticalOptions="Center"
+               Margin="20,20,500,100">
+    </SearchBar>-->
+
+    <!-- Sort Dropdown -->
+    <!-- Grid Layout for SearchBar and Picker -->
+       
+            
+        
+       <!-- <ListView ItemsSource="{Binding SortedPatients}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Condition}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+       <!-- <segmented:SegmentedControl >
+        	<segmented:SegmentedControl.Children>
+            	<segmented:SegmentedControlOption Text="PatientsList" />
+            	<segmented:SegmentedControlOption Text="Collections" />
+        	</segmented:SegmentedControl.Children>
+		</segmented:SegmentedControl>-->
+
+         <ListView ItemsSource="{Binding Patients}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="5">
+                            <Label Text="{Binding Name}" FontSize="Medium" />
+                            <Label Text="{Binding Age, StringFormat='Age: {0}'}" FontSize="Micro" />
+                            <Label Text="{Binding Condition}" FontSize="Micro" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--<Button
+            Text="Logout"
+            Clicked="OnLogoutButtonClicked"
+            HorizontalOptions="End" 
+            />-->
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,18 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MVVM_Login.Views.Disclaimer">
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="10">
+       
+        <Image Source="C:\Users\sannihith.puppala\Downloads\info.png"
+               WidthRequest="24"
+               HeightRequest="24"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        <ScrollView>
+            <Label Text="This line is not intended to be used &#10; for diagnostic purposes" HorizontalTextAlignment="Center"/>
+        </ScrollView>
+        <Button Text="I understand" 
+        Clicked="OnAccept"  BackgroundColor="Grey" TextColor="Black" HorizontalOptions="Center"/>
+        <ActivityIndicator IsRunning="False" />
+    </StackLayout>
+</ContentPage>
