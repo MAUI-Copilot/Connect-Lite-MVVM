@@ -9,7 +9,7 @@
                VerticalOptions="Center"
                HorizontalOptions="Center" />
         <ScrollView>
-            <Label Text="This line is not intended to be used &#10; for diagnostic purposes" HorizontalTextAlignment="Center"/>
+            <Label Text="This App is not intended to be used &#10; for diagnostic purposes" HorizontalTextAlignment="Center"/>
         </ScrollView>
         <Button Text="I understand" 
         Clicked="OnAccept"  BackgroundColor="Grey" TextColor="Black" HorizontalOptions="Center"/>
