@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+	x:Class="MVVM_Login.AppShell"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:MVVM_Login.Views"
+	Shell.FlyoutBehavior="Disabled"
+	Title="Connect_Lite">
+
+	
+
+	<ShellContent Route="SplashScreen" ContentTemplate="{DataTemplate local:SplashScreen}" />
+    <ShellContent Route="Disclaimer" ContentTemplate="{DataTemplate local:Disclaimer}" />
+	<ShellContent Route="WelcomePage" ContentTemplate="{DataTemplate local:WelcomePage}" />
+	
+	
+    <!--<ShellContent Route="CloudPage" ContentTemplate="{DataTemplate local:CloudPage}" />-->
+	<TabBar>
+	
+	
+    <Tab  Icon="cloud.png"  Title="Cloud" Route="CloudPage" >
+	 <ShellContent  ContentTemplate="{DataTemplate local:CloudPage}" />
+	<ShellContent  Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}"  />
+	 <ShellContent Route="CloudPage1" ContentTemplate="{DataTemplate local:CloudPage1}"  />
+	</Tab>
+	<Tab Icon="gallery.png" Title="Gallery" >
+			<ShellContent ContentTemplate="{DataTemplate local:GalleryPage}" />
+	</Tab>
+	<Tab Icon="live.jpg" Title="Live" >
+			<ShellContent ContentTemplate="{DataTemplate local:LivePage}" />
+	</Tab>
+	<Tab Icon="more.png" Title="More">
+			<ShellContent ContentTemplate="{DataTemplate local:MorePage}" />
+	</Tab>
+		
+</TabBar>
+
+
+
+</Shell>
