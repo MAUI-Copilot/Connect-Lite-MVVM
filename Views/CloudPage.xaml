@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:MVVM_Login.ViewModels"
+			 x:Class="MVVM_Login.Views.CloudPage">
+	<ContentPage.BindingContext>
+		<vm:CloudViewModel />
+	</ContentPage.BindingContext>
+	<VerticalStackLayout
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand"
+            Padding="30,0"
+            Spacing="25">
+
+        <Image
+                Source="zeisslogo.jpg"
+                HeightRequest="60"
+                Aspect="AspectFit"
+                SemanticProperties.Description="ZEISS Logo" />
+
+          <Label
+                Text="ZEISS Surgical Cloud"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+ 
+            <Label
+                Text="Login to ZEISS Surgical Cloud &#10;to view Patient Data"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2" />
+
+           <Button
+            Text="Login"
+            Clicked="OnLoginButtonClicked"
+            HorizontalOptions="Center" 
+            
+            />
+            
+           
+       
+        </VerticalStackLayout>
+
+</ContentPage>

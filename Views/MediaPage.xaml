@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:MVVM_Login.ViewModels"
+			 x:Class="MVVM_Login.Views.MediaPage"
+             xmlns:segmented="clr-namespace:Plugin.Maui.SegmentedControl;assembly=Plugin.Maui.SegmentedControl"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 Unloaded="ContentPage_Unloaded">
+
+	<ContentPage.BindingContext>
+		<local:MediaViewModel />
+	</ContentPage.BindingContext>
+
+		
+	<Grid Padding="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+	 	
+               
+                <Label Text="Share" HorizontalOptions="End" Grid.Row="0" />
+		
+
+		<Label Grid.Row="1"
+		Text="{Binding SelectedPatient.Name}"
+		Style="{StaticResource Headline}" HorizontalOptions="Start"
+		SemanticProperties.HeadingLevel="Level3" />
+
+		<Label Grid.Row="2">
+		  
+            <Label.Text>
+                <MultiBinding StringFormat="{}{0} | {1}yrs | {2}">
+                    <Binding Path="SelectedPatient.Gender" />
+                    <Binding Path="SelectedPatient.Age" />
+                    <Binding Path="SelectedPatient.ID" />
+                </MultiBinding>
+            </Label.Text>
+        </Label>
+							
+
+
+		<segmented:SegmentedControl SelectedSegment="{Binding SelectedSegment,Mode=TwoWay}" Grid.Row="3"
+			WidthRequest="390" HeightRequest="40">
+            <segmented:SegmentedControl.Children>
+                <segmented:SegmentedControlOption Text="All" />
+                <segmented:SegmentedControlOption Text="Images" />
+                <segmented:SegmentedControlOption Text="Videos" />
+            </segmented:SegmentedControl.Children>
+        </segmented:SegmentedControl>
+		
+		<ScrollView Grid.Row="4">
+		<CollectionView ItemsSource="{Binding FilteredMediaItems}" ItemsLayout="VerticalGrid, 2">
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<StackLayout Orientation="Vertical">
+						
+						<Image Margin="10" Source="{Binding Url}"  Aspect="AspectFill" WidthRequest="176" HeightRequest="99"/>
+						<toolkit:MediaElement x:Name="mediaElement" Margin="10"	Aspect="AspectFill"  Source="{Binding Url}" WidthRequest="176" HeightRequest="99"/>								
+					</StackLayout> 
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+		</ScrollView>
+	</Grid>
+</ContentPage>

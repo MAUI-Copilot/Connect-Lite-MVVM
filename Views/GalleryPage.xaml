@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:MVVM_Login.ViewModels"
+			 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+			 x:Class="MVVM_Login.Views.GalleryPage" Title="Gallery">
+	<ContentPage.BindingContext>
+		<vm:GalleryViewModel />
+	</ContentPage.BindingContext>
+	
+	 <ScrollView>
+        <StackLayout>
+            <!-- List of Images -->
+            <CollectionView ItemsSource="{Binding Images}" ItemsLayout="VerticalGrid, 2" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame WidthRequest="176" HeightRequest="99" Margin="10">
+                            <Image Source="{Binding .}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="108"
+                                   WidthRequest="192" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- List of Videos -->
+            <CollectionView ItemsSource="{Binding Videos}" ItemsLayout="VerticalGrid, 2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame  WidthRequest="176" HeightRequest="99" Margin="5">
+                            <toolkit:MediaElement Source="{Binding .}"
+                                                Aspect="AspectFill"
+                                                HeightRequest="108"
+                                                WidthRequest="191"
+                                                ShouldAutoPlay="False"
+                                                />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
